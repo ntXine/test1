@@ -36,14 +36,22 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-        /*
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
             ],
         ],
-        */
+    ],
+    'modules' => [
+    	'catalogUpdater' => [
+    		'class' => frontend\modules\catalogUpdater\Module::class,
+		    'config' => 'parser_config',
+	        'parsers' => [
+	        	'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' =>
+			        \frontend\modules\catalogUpdater\components\XlsxFileParser::class
+	        ]
+	    ]
     ],
     'params' => $params,
 ];
